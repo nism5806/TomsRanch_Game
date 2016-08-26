@@ -1,7 +1,7 @@
 /**
  * Nick Smith
  * Created: 8/25/16
- * Last Changed: 8/25/16
+ * Last Changed: 8/26/16
  * Description: 
  * Decorated JFrame that will handle closing 
  * Ideally gives have-you-saved warning before closing with a checkbox do not show this again option
@@ -13,34 +13,48 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 public class MasterWindow extends JFrame{
-	final int width=960;
-	final int height=600;
-	//Constructor. Sets window name.
+	private final int width=960;
+	private final int height=600;
+	private JPanel currentScene;
+	//Constructor. Sets window name. Builds empty window.
 	MasterWindow(){
 		super("Tom's Ranch");
-		setPreferredSize(new Dimension(width,height));
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				System.exit(0);
 			}
 		});
+		JPanel empty=new JPanel();
+		empty.setPreferredSize(new Dimension(width,height));
+		getContentPane().add(empty);
+		currentScene=empty;
 		setVisible(true);
 		pack();
 	}
 	//displays panel argument
 	//returns -1 if fails, 0 otherwise
-	public int showPanel(JPanel panel){
+	public int showPanel(Scene panel){
 		if(panel.getWidth()>width || panel.getHeight()>height){
-			//JPanel too large
+			//Scene too large
+			System.out.println("Scene too large");
 			return -1;
 		}
-		
+		//TODO: check if current scene is finished
+		//must change init panel to Scene but I don't want to code in an empty Scene
+		getContentPane().remove(getCurrentScene());
+		getContentPane().add(panel);
+		panel.setVisible(true);
+		pack();
 		return 0;
 	}
-	
+	public JPanel getCurrentScene(){
+		return currentScene;
+	}
 
 	public static void main(String[] args) {
-		new MasterWindow();
+		MasterWindow mw=new MasterWindow();
+		mw.showPanel(new Gameplay());
+		System.out.println("test");
 	}
 
 }
