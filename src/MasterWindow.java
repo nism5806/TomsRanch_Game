@@ -6,6 +6,9 @@
  * Decorated JFrame that will handle closing 
  * Ideally gives have-you-saved warning before closing with a checkbox do not show this again option
  * Can be passed a JPanel/Frame and displays it or queues it to be displayed
+ * 960 by 600
+ * 40 pixel blocks
+ * I want 8 bit arcade feel so images will be made with 5x5 pixels. 5*8
  *
  */
 //quick refresher on the imports: http://www.wideskills.com/java-tutorial/java-frame-class-example
