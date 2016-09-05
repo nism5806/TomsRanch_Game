@@ -1,10 +1,10 @@
 /**
  * Nick Smith
  * Created: 8/28/2016
- * Last Changed: 8/28/2016
+ * Last Changed: 9/4/2016
  * Description:
  * Grid Canvas to for ArtMaker. Set color and click.
- * Used https://github.com/haxxorsid/Swing-Paint-Application for help
+ * Used https://github.com/haxxorsid/Swing-Paint-Application for A LOT OF help
  */
 import java.awt.*;
 import java.awt.event.*;
@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-public class Canvas extends JComponent implements MouseListener{
+public class Canvas extends JComponent{
 	private Graphics2D g;
 	private BufferedImage img;
 	private Color color;
@@ -81,29 +81,15 @@ public class Canvas extends JComponent implements MouseListener{
 		paintGrid();
 		repaint();
 	}
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	
+	public Color getColor(){
+		return color;
 	}
-
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void setColor(Color c){
+		color=c;
 	}
-
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void setColor(int r, int g, int b){
+		color=new Color(r,g,b);
 	}
 	
 }
